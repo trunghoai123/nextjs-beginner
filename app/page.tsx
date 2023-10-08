@@ -1,9 +1,12 @@
 import Image from "next/image";
+import styles from "./page.module.css";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      hello
+    <main>
+      <h1>Home Page</h1>
+      <Link href={"about"}>Go to About Page</Link>
     </main>
   );
 }
