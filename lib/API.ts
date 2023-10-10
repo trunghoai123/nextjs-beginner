@@ -1,0 +1,26 @@
+export async function getAllUsers() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  }
+  throw new Error(res.statusText);
+}
+export async function getUser(id: number) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  }
+  throw new Error(res.statusText);
+}
+export async function getUserPosts(userId: number) {
+  const res = await fetch(
+    `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+  );
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  }
+  throw new Error(res.statusText);
+}
