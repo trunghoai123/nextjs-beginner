@@ -1,10 +1,12 @@
 export async function getAllUsers() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const res = await fetch("https://jsonplaceholder.typicode.com/users", {
+    next: { revalidate: 60 },
+  });
   if (res.ok) {
     const data = await res.json();
     return data;
   }
-  throw new Error(res.statusText);
+  return undefined;
 }
 export async function getUser(id: number) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
@@ -12,7 +14,7 @@ export async function getUser(id: number) {
     const data = await res.json();
     return data;
   }
-  throw new Error(res.statusText);
+  return undefined;
 }
 export async function getUserPosts(userId: number) {
   const res = await fetch(
